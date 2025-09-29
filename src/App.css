@@ -44,3 +44,9 @@
 {
   background-color: #3E42FA;
 }
+
+.mensagem-erro
+{
+  color: red;
+  margin-bottom: 10px;
+}
