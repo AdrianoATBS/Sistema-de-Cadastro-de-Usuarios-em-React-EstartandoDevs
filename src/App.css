@@ -52,6 +52,8 @@
 }
 
 .lista-usuarios {
+  display:flex;
+  flex-direction: column;
   width: 50%;
   margin: 20px auto;
   padding: 10px;
@@ -88,4 +90,8 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.estatisticas {
+  text-align: center;
+  margin-bottom: 20px;
 }
