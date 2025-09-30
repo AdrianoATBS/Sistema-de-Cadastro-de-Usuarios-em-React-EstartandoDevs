@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-export default function FormularioUsuario({adicionarUsuario, usuarioEditando, salvarEdicao, usuario}) {
+export default function FormularioUsuario({adicionarUsuario, usuarioEditando, salvarEdicao, usuario, filtro,setFiltro}) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [idade, setIdade] = useState('');
@@ -38,6 +38,8 @@ export default function FormularioUsuario({adicionarUsuario, usuarioEditando, sa
         }
         return true;
     }
+
+    
 
     const handlerSubmit = (e) =>
     {
@@ -84,6 +86,8 @@ export default function FormularioUsuario({adicionarUsuario, usuarioEditando, sa
                 <button className="botao-cadastro" type="submit">
                     {usuarioEditando ? "Salvar Edição" : "Cadastrar"}
                 </button>
+                <label>Filtrar Usuários:</label>
+                <input className="input" value={filtro} onChange={(e) => setFiltro(e.target.value)} type="text" placeholder="Filtrar usuários..." />
                 {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
             </form>
         </div>

@@ -2,7 +2,7 @@ export default function ListaUsuarios({usuarios, excluirUsuario, setUsuarioEdita
     const total = usuarios.length;
     const maiores = usuarios.filter(u => u.idade >= 18).length;
     const menores = total - maiores;
-   
+
     return(
         <div className="lista-usuarios">
             <h2>Lista de Usuários</h2>
