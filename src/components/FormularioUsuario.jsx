@@ -1,10 +1,19 @@
-import { useState } from "react";
-export default function FormularioUsuario({adicionarUsuario}) {
+import { useState, useEffect } from "react";
+export default function FormularioUsuario({adicionarUsuario, usuarioEditando, salvarEdicao}) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [idade, setIdade] = useState('');
     const [cidade, setCidade] = useState('');
     const [mensagemErro, setMensagemErro] = useState('');
+
+    useEffect(() =>{
+        if(usuarioEditando) {
+            setNome(usuarioEditando.nome);
+            setEmail(usuarioEditando.email);
+            setIdade(usuarioEditando.idade);
+            setCidade(usuarioEditando.cidade);
+        }
+    }, [usuarioEditando])
 
     const validarFormulario = () => {
         if(!nome || !email || !idade || !cidade)
@@ -36,7 +45,12 @@ export default function FormularioUsuario({adicionarUsuario}) {
                 idade: idade,
                 cidade: cidade
             };
-            adicionarUsuario(novoUsuario);
+            if(usuarioEditando) {
+                salvarEdicao(usuarioEditando, novoUsuario);
+            }
+            else{
+                adicionarUsuario(novoUsuario);
+            }
             setNome('');
             setEmail('');
             setIdade('');
@@ -62,7 +76,9 @@ export default function FormularioUsuario({adicionarUsuario}) {
                 <label>Cidade:</label>
                 <input onChange={(e) => {setCidade(e.target.value)}} value={cidade} className="input" type="text" placeholder="Cidade"></input>
 
-                <button className="botao-cadastro" type="submit">Cadastro</button>
+                <button className="botao-cadastro" type="submit">
+                    {usuarioEditando ? "Salvar Edição" : "Cadastrar"}
+                </button>
                 {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
             </form>
         </div>

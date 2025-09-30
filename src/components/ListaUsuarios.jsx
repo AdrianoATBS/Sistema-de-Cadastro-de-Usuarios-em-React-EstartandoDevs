@@ -1,8 +1,5 @@
-export default function ListaUsuarios({usuarios}) {
-   const excluirUsuario = (usuario) =>{
-        const novosUsuarios = [...usuarios];
-        novosUsuarios.splice(novosUsuarios.indexOf(usuario), 1);
-   }
+export default function ListaUsuarios({usuarios, excluirUsuario, setUsuarioEditando}) {
+
    
     return(
         <div className="lista-usuarios">
@@ -16,7 +13,8 @@ export default function ListaUsuarios({usuarios}) {
                         {`Nome: ${usuario.nome} - Email: ${usuario.email} - 
                         Idade: ${usuario.idade} anos - 
                         Cidade: ${usuario.cidade}`}
-                        <button onClick={() => excluirUsuario(index)}>Excluir</button>
+                        <button className="botao-excluir" onClick={() => excluirUsuario(usuario)}>Excluir</button>
+                        <button className="botao-editar" onClick={() => setUsuarioEditando(usuario)}>Editar</button>
                     </li>
                 ))}
                 </ul>

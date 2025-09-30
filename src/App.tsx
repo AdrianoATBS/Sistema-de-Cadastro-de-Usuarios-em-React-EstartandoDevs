@@ -5,14 +5,22 @@ import ListaUsuarios from './components/ListaUsuarios'
 
 function App() {
   const [usuarios, setUsuarios] = useState([])
+  const [usuarioEditando, setUsuarioEditando] = useState(null)
 
   function adicionarUsuario(usuario) {
     setUsuarios([...usuarios, usuario])
   }
+  function excluirUsuario(usuario) {
+    setUsuarios(usuarios.filter(u => u !== usuario))
+  }
+  function editarUsuario(usuarioAntigo, usuarioNovo) {
+    setUsuarios(usuarios.map(u => u === usuarioAntigo ? usuarioNovo : u))
+    setUsuarioEditando(null)
+  }
   return (
     <>
-      <FormularioUsuario adicionarUsuario={adicionarUsuario} />
-      <ListaUsuarios usuarios={usuarios} />
+      <FormularioUsuario adicionarUsuario={adicionarUsuario} usuarioEditando={usuarioEditando} salvarEdicao={editarUsuario} />
+      <ListaUsuarios usuarios={usuarios} excluirUsuario={excluirUsuario} setUsuarioEditando={setUsuarioEditando} />
     </>
   )
 }

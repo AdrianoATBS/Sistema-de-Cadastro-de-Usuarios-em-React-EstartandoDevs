@@ -72,3 +72,20 @@
   border-bottom: 1px solid #ccc;
   border-radius: 5px;
 }
+.botao-excluir{
+  margin-left: 10px;
+  background-color: #FA3E3E;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.botao-editar{
+  margin-left: 10px;
+  background-color: #FA9E3E;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
