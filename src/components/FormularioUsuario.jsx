@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-export default function FormularioUsuario({adicionarUsuario, usuarioEditando, salvarEdicao}) {
+export default function FormularioUsuario({adicionarUsuario, usuarioEditando, salvarEdicao, usuario}) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [idade, setIdade] = useState('');
@@ -29,6 +29,11 @@ export default function FormularioUsuario({adicionarUsuario, usuarioEditando, sa
         else if(isNaN(idade) || idade <= 0)
         {
             setMensagemErro('Por favor, insira uma idade válida.');
+            return false;
+        }
+        else if(usuario.some(u => u.email === email) && (!usuarioEditando || usuarioEditando.email !== email))
+        {
+            setMensagemErro('Este email já está em uso.');
             return false;
         }
         return true;

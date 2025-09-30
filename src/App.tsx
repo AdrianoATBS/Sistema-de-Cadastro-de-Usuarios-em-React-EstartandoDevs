@@ -19,7 +19,10 @@ function App() {
   }
   return (
     <>
-      <FormularioUsuario adicionarUsuario={adicionarUsuario} usuarioEditando={usuarioEditando} salvarEdicao={editarUsuario} />
+      <FormularioUsuario adicionarUsuario={adicionarUsuario} 
+      usuarioEditando={usuarioEditando} 
+      salvarEdicao={editarUsuario} 
+      usuario={usuarios} />
       <ListaUsuarios usuarios={usuarios} excluirUsuario={excluirUsuario} setUsuarioEditando={setUsuarioEditando} />
     </>
   )
