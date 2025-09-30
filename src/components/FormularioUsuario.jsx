@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function FormularioUsuario() {
+export default function FormularioUsuario({adicionarUsuario}) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [idade, setIdade] = useState('');
@@ -30,7 +30,13 @@ export default function FormularioUsuario() {
         e.preventDefault();
         if(validarFormulario())
         {
-            console.log({nome, email, idade, cidade});
+            const novoUsuario = {
+                nome: nome,
+                email: email,
+                idade: idade,
+                cidade: cidade
+            };
+            adicionarUsuario(novoUsuario);
             setNome('');
             setEmail('');
             setIdade('');
